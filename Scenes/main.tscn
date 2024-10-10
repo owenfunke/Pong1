@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://8n0umoiflm7j"]
+[gd_scene load_steps=11 format=3 uid="uid://8n0umoiflm7j"]
 
 [ext_resource type="Texture2D" uid="uid://di5qbif25vjhl" path="res://assets/Bg.png" id="1_psdn7"]
 [ext_resource type="FontFile" uid="uid://cunmo1076xcfb" path="res://assets/pixel_2/Pixel-Regular.ttf" id="2_jbh20"]
 [ext_resource type="Script" path="res://Scenes/Main.cs" id="2_ngmen"]
 [ext_resource type="Script" path="res://Scenes/Player.cs" id="3_ayq64"]
+[ext_resource type="Script" path="res://Scenes/Ball.cs" id="4_e2it6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovw1t"]
 size = Vector2(20, 120)
@@ -64,6 +65,7 @@ shape = SubResource("RectangleShape2D_ovw1t")
 [node name="Ball" type="CharacterBody2D" parent="."]
 position = Vector2(576, 324)
 collision_mask = 3
+script = ExtResource("4_e2it6")
 
 [node name="ColorRect" type="ColorRect" parent="Ball"]
 anchors_preset = 8
