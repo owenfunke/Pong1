@@ -12,6 +12,6 @@ public partial class TestText : Label
 	public override void _Process(double delta)
 	{
 		var parentNode = (Main)GetParent();
-		Text = Position.ToString();
+		Text = Position.X.ToString();
 	}
 }
