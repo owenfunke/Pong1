@@ -20,7 +20,7 @@ public partial class Player : StaticBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		var parentNode = (Main)GetParent();
+		Main parentNode = (Main)GetParent();
 		if (Input.IsActionPressed("ui_up"))
 		{
 			Position -= new Godot.Vector2(0, parentNode.paddleSpeed * (float)delta);
