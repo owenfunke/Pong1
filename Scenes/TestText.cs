@@ -12,6 +12,9 @@ public partial class TestText : Label
 	public override void _Process(double delta)
 	{
 		var parentNode = (Main)GetParent();
-		Text = Position.X.ToString();
+		GD.Randomize();
+		double randomNum = GD.RandRange(200, 500f);
+		Vector2 gmm = new Vector2(50, (float)randomNum);
+		Text = gmm.ToString();
 	}
 }

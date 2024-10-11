@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://8n0umoiflm7j"]
+[gd_scene load_steps=12 format=3 uid="uid://8n0umoiflm7j"]
 
 [ext_resource type="Texture2D" uid="uid://di5qbif25vjhl" path="res://assets/Bg.png" id="1_psdn7"]
 [ext_resource type="FontFile" uid="uid://cunmo1076xcfb" path="res://assets/pixel_2/Pixel-Regular.ttf" id="2_jbh20"]
 [ext_resource type="Script" path="res://Scenes/Main.cs" id="2_ngmen"]
 [ext_resource type="Script" path="res://Scenes/Player.cs" id="3_ayq64"]
 [ext_resource type="Script" path="res://Scenes/Ball.cs" id="4_e2it6"]
+[ext_resource type="Script" path="res://Scenes/TestText.cs" id="6_je73w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovw1t"]
 size = Vector2(20, 120)
@@ -135,3 +136,12 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 312.0
+offset_top = 250.0
+offset_right = 352.0
+offset_bottom = 273.0
+text = "sdjkj
+"
+script = ExtResource("6_je73w")
