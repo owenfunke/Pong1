@@ -133,7 +133,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="."]
+[node name="BallTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
@@ -145,3 +145,5 @@ offset_bottom = 273.0
 text = "sdjkj
 "
 script = ExtResource("6_je73w")
+
+[connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]

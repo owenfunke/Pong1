@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 public partial class Ball : CharacterBody2D
 {
-   
     public Vector2 windowSize;
     public float startSpeed = 500f;
     public float speed;
@@ -40,6 +39,6 @@ public partial class Ball : CharacterBody2D
     }
     public override void _PhysicsProcess(double delta)
     {
-       
+       MoveAndCollide(direction * speed * (float)delta);
     }
 }
