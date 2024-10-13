@@ -31,7 +31,7 @@ public partial class Ai : StaticBody2D
         else{
             moveDistance = distance;
         }
-        Position -= new Vector2(0, moveDistance);
+        Position -= new Vector2(0, (int)moveDistance);
         Position = new Vector2(Position.X, Mathf.Clamp(Position.Y, halfPaddleHeight, windowHeight - halfPaddleHeight));
     }
 }
