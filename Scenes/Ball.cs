@@ -35,6 +35,44 @@ public partial class Ball : CharacterBody2D
         newdir.Y = (float)GD.RandRange(-1, 1);
         return newdir.Normalized();
     }
+    public Vector2 NewDirection(GodotObject collider){
+        float ball_y = Position.Y;
+        float paddle_y = 0;
+        float halfPaddleHeight = 0;
+        Vector2 newdir = new Vector2();
+        Node2D colliderNode = collider as Node2D;
+        // Check if collider is Player
+        if (collider is Player player)
+        {
+            paddle_y = player.Position.Y;
+            halfPaddleHeight = player.halfPaddleHeight;
+            GD.Print("Player");
+        }
+        // Check if collider is Ai
+        else if (collider is Ai ai)
+        {
+            paddle_y = ai.Position.Y;
+            halfPaddleHeight = ai.halfPaddleHeight;
+            GD.Print("Ai");
+        }
+        else
+        {
+            GD.Print("Collider is neither Player nor Ai");
+            return newdir;
+        }
+        float distance = ball_y - paddle_y;
+        GD.Print("Ball Y: ", ball_y, " Paddle Y: ", paddle_y, " Distance: ", distance);
+        if (colliderNode.Position.X > halfWidth){
+            newdir.X = -1;
+        }
+        else{
+            newdir.X = 1;
+        }
+        newdir.Y = (distance / halfPaddleHeight) * MaxYVector;
+        direction = newdir.Normalized();
+        GD.Print("New Direction: ", direction);
+        return direction;
+    }
     public override void _PhysicsProcess(double delta)
     {
         var collision = MoveAndCollide(direction * speed * (float)delta);
@@ -54,42 +92,7 @@ public partial class Ball : CharacterBody2D
                 GD.Print("else");
             }
         }
-    }
-    public Vector2 NewDirection(GodotObject collider){
-        float ball_y = Position.Y;
-        float paddle_y = 0;
-        float halfPaddleHeight = 0;
-        Vector2 newdir = new Vector2();
-        Node2D colliderNode = collider as Node2D;
-        // Check if collider is Player
-        if (collider is Player player)
-        {
-            paddle_y = player.Position.Y;
-            halfPaddleHeight = player.halfPaddleHeight;
-        }
-        // Check if collider is Ai
-        else if (collider is Ai ai)
-        {
-            paddle_y = ai.Position.Y;
-            halfPaddleHeight = ai.halfPaddleHeight;
-        }
-        else
-        {
-            GD.Print("Collider is neither Player nor Ai");
-            return newdir;
-        }
-        float distance = ball_y - paddle_y;
-        
-        if (colliderNode.Position.X > 0){
-            newdir.X = -1;
-        }
-        else{
-            newdir.X = 1;
-        }
-        newdir.Y = (distance / halfPaddleHeight) * MaxYVector;
-        return newdir.Normalized();
-    }
-    
+    } 
 }
 
 
