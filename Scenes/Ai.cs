@@ -9,7 +9,7 @@ public partial class Ai : StaticBody2D
     float moveDistance;
     int windowHeight;
     int paddleHeight;
-    int halfPaddleHeight;
+    public int halfPaddleHeight;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -23,9 +23,13 @@ public partial class Ai : StaticBody2D
     public override void _Process(double delta)
     {
         ballPosition = GetNode<Ball>("/root/Main/MyBalls").Position;
+        Main main = GetNode<Main>("/root/Main");
         distance = (int)Position.Y - (int)ballPosition.Y;
-        if (Math.Abs(distance) > 0){
-            moveDistance = (float)GetNode<Main>("/root/Main").paddleSpeed * (float)delta * (distance/Math.Abs(distance));
+        if (Math.Abs(distance) > main.paddleSpeed * delta){
+            moveDistance = (float)main.paddleSpeed * (float)delta * (distance/Math.Abs(distance));
+        }
+        else{
+            moveDistance = distance;
         }
         Position -= new Vector2(0, moveDistance);
         Position = new Vector2(Position.X, Mathf.Clamp(Position.Y, halfPaddleHeight, windowHeight - halfPaddleHeight));

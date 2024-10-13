@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 public partial class Player : StaticBody2D
 {
 	int windowHeight;
-	int paddleHeight;
-	int halfPaddleHeight;
+	public int paddleHeight;
+	public int halfPaddleHeight;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
