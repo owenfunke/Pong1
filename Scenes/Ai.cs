@@ -24,7 +24,9 @@ public partial class Ai : StaticBody2D
     {
         ballPosition = GetNode<Ball>("/root/Main/MyBalls").Position;
         distance = (int)Position.Y - (int)ballPosition.Y;
-        moveDistance = (float)GetNode<Main>("/root/Main").paddleSpeed * (float)delta * (distance/Math.Abs(distance));
+        if (Math.Abs(distance) > 0){
+            moveDistance = (float)GetNode<Main>("/root/Main").paddleSpeed * (float)delta * (distance/Math.Abs(distance));
+        }
         Position -= new Vector2(0, moveDistance);
         Position = new Vector2(Position.X, Mathf.Clamp(Position.Y, halfPaddleHeight, windowHeight - halfPaddleHeight));
     }

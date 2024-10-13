@@ -9,7 +9,7 @@ public partial class Ball : CharacterBody2D
     public Vector2 windowSize;
     public float startSpeed = 500f;
     public float speed;
-    public float acceleration = 50f;
+    public float acceleration = 500000f;
     public Vector2 direction;
     float halfWidth;
     // Called when the node enters the scene tree for the first time.
@@ -35,19 +35,19 @@ public partial class Ball : CharacterBody2D
     }
     public override void _PhysicsProcess(double delta)
     {
-        MoveAndCollide(direction * speed * (float)delta);
-       /* var collision = MoveAndCollide(direction * speed * (float)delta);
-       GodotObject collider;
+        //MoveAndCollide(direction * speed * (float)delta);
+       var collision = MoveAndCollide(direction * speed * (float)delta);
        if (collision != null){
-            collider = collision.GetCollider();
+            var collider = collision.GetCollider();
             if (collider == GetNode<Player>("Player") || collider == GetNode<Ai>("Ai")){
+                GD.Print("Collision with Player or AI. Increasing speed.");
                 speed += acceleration;
                 direction = direction.Bounce(collision.GetNormal());
             }
             else{
                 direction = direction.Bounce(collision.GetNormal());
             }
-       } */
+       }
        
         //chatgpt tried lol
         /* Velocity = direction * speed;
