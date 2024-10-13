@@ -9,7 +9,7 @@ public partial class Ball : CharacterBody2D
     public Vector2 windowSize;
     public float startSpeed = 500f;
     public float speed;
-    public float acceleration = 500000f;
+    public float acceleration = 500f;
     public Vector2 direction;
     float halfWidth;
     // Called when the node enters the scene tree for the first time.
@@ -35,41 +35,23 @@ public partial class Ball : CharacterBody2D
     }
     public override void _PhysicsProcess(double delta)
     {
-        //MoveAndCollide(direction * speed * (float)delta);
-       var collision = MoveAndCollide(direction * speed * (float)delta);
-       if (collision != null){
+        var collision = MoveAndCollide(direction * speed * (float)delta);
+        if (collision != null){
+
             var collider = collision.GetCollider();
-            if (collider == GetNode<Player>("Player") || collider == GetNode<Ai>("Ai")){
+            Player player = GetNode<Player>("../Player");
+            Ai ai = GetNode<Ai>("../AI");
+                
+            if (collider == player || collider == ai){
                 GD.Print("Collision with Player or AI. Increasing speed.");
                 speed += acceleration;
                 direction = direction.Bounce(collision.GetNormal());
             }
             else{
                 direction = direction.Bounce(collision.GetNormal());
+                GD.Print("else");
             }
-       }
-       
-        //chatgpt tried lol
-        /* Velocity = direction * speed;
-        MoveAndSlide();
-        for (int i = 0; i < GetSlideCollisionCount(); i++)
-        {
-            var collision = GetSlideCollision(i);
-            var collider = collision.GetCollider();
-
-
-            // Check if collided with Player or Ai
-            if (collider == GetNode<Player>("/root/Main/Player") || collider == GetNode<Ai>("/root/Main/Ai"))
-            {
-                speed += acceleration;
-                direction = Velocity.Bounce(collision.GetNormal()).Normalized();
-            }
-            else
-            {
-                // Bounce off walls or other colliders
-                direction = Velocity.Bounce(collision.GetNormal()).Normalized();
-            }
-        } */
+        }
     }
 }
 
