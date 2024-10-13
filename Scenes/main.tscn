@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://8n0umoiflm7j"]
+[gd_scene load_steps=13 format=3 uid="uid://8n0umoiflm7j"]
 
 [ext_resource type="Texture2D" uid="uid://di5qbif25vjhl" path="res://assets/Bg.png" id="1_psdn7"]
 [ext_resource type="FontFile" uid="uid://cunmo1076xcfb" path="res://assets/pixel_2/Pixel-Regular.ttf" id="2_jbh20"]
 [ext_resource type="Script" path="res://Scenes/Main.cs" id="2_ngmen"]
 [ext_resource type="Script" path="res://Scenes/Player.cs" id="3_ayq64"]
 [ext_resource type="Script" path="res://Scenes/Ball.cs" id="4_e2it6"]
+[ext_resource type="Script" path="res://Scenes/Ai.cs" id="4_hppri"]
 [ext_resource type="Script" path="res://Scenes/TestText.cs" id="6_je73w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovw1t"]
@@ -48,6 +49,7 @@ shape = SubResource("RectangleShape2D_ovw1t")
 
 [node name="AI" type="StaticBody2D" parent="."]
 position = Vector2(1082, 324)
+script = ExtResource("4_hppri")
 
 [node name="ColorRect" type="ColorRect" parent="AI"]
 anchors_preset = 4
@@ -63,12 +65,12 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(10, 0)
 shape = SubResource("RectangleShape2D_ovw1t")
 
-[node name="Ball" type="CharacterBody2D" parent="."]
+[node name="MyBalls" type="CharacterBody2D" parent="."]
 position = Vector2(576, 324)
 collision_mask = 3
 script = ExtResource("4_e2it6")
 
-[node name="ColorRect" type="ColorRect" parent="Ball"]
+[node name="ColorRect" type="ColorRect" parent="MyBalls"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -81,7 +83,7 @@ offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MyBalls"]
 shape = SubResource("RectangleShape2D_et23a")
 
 [node name="Borders" type="StaticBody2D" parent="."]
@@ -145,3 +147,5 @@ offset_bottom = 273.0
 text = "sdjkj
 "
 script = ExtResource("6_je73w")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
