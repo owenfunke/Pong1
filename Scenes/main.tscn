@@ -151,6 +151,9 @@ text = "sdjkj
 script = ExtResource("6_je73w")
 
 [node name="Vignette" type="Sprite2D" parent="."]
+visible = false
+light_mask = 4
+visibility_layer = 4
 scale = Vector2(1.805, 1.62)
 texture = ExtResource("8_v3df4")
 centered = false

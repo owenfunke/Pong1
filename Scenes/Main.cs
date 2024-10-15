@@ -27,11 +27,13 @@ public partial class Main : Sprite2D
     public void _on_score_left_body_entered(Node body){
         score[1]++;
         GetNode<CanvasLayer>("HeadsUpDisplay").GetNode<Label>("AIScore").Text = score[1].ToString();
+        GD.Print("AI: " +score[1]);
         _timer.Start();
     }
     public void _on_score_right_body_entered(Node body){
         score[0]++; 
         GetNode<CanvasLayer>("HeadsUpDisplay").GetNode<Label>("Score").Text = score[0].ToString();
         _timer.Start();
+        GD.Print("Player 1: " + score[0]);
     }
 }
