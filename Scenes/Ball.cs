@@ -61,7 +61,7 @@ public partial class Ball : CharacterBody2D
             return newdir;
         }
         float distance = ball_y - paddle_y;
-        GD.Print("Ball Y: ", ball_y, " Paddle Y: ", paddle_y, " Distance: ", distance);
+        //GD.Print("Ball Y: ", ball_y, " Paddle Y: ", paddle_y, " Distance: ", distance);
         if (colliderNode.Position.X > halfWidth){
             newdir.X = -1;
         }
@@ -70,7 +70,7 @@ public partial class Ball : CharacterBody2D
         }
         newdir.Y = (distance / halfPaddleHeight) * MaxYVector;
         direction = newdir.Normalized();
-        GD.Print("New Direction: ", direction);
+        //GD.Print("New Direction: ", direction);
         return direction;
     }
     public override void _PhysicsProcess(double delta)

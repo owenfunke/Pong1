@@ -147,3 +147,8 @@ offset_bottom = 273.0
 text = "sdjkj
 "
 script = ExtResource("6_je73w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="body_entered" from="ScoreLeft" to="." method="_on_score_left_body_entered"]
+[connection signal="body_entered" from="ScoreRight" to="." method="_on_score_right_body_entered"]
