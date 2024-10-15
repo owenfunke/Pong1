@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8n0umoiflm7j"]
+[gd_scene load_steps=15 format=3 uid="uid://8n0umoiflm7j"]
 
 [ext_resource type="Texture2D" uid="uid://di5qbif25vjhl" path="res://assets/Bg.png" id="1_psdn7"]
 [ext_resource type="FontFile" uid="uid://cunmo1076xcfb" path="res://assets/pixel_2/Pixel-Regular.ttf" id="2_jbh20"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Scenes/Ball.cs" id="4_e2it6"]
 [ext_resource type="Script" path="res://Scenes/Ai.cs" id="4_hppri"]
 [ext_resource type="Script" path="res://Scenes/TestText.cs" id="6_je73w"]
+[ext_resource type="Texture2D" uid="uid://ck4cb8f3ubkqt" path="res://assets/pngkey.com-blurry-transparent-png-3687354.png" id="8_v3df4"]
+[ext_resource type="Script" path="res://Scenes/Vignette.cs" id="9_acprs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovw1t"]
 size = Vector2(20, 120)
@@ -148,7 +150,11 @@ text = "sdjkj
 "
 script = ExtResource("6_je73w")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Vignette" type="Sprite2D" parent="."]
+scale = Vector2(1.805, 1.62)
+texture = ExtResource("8_v3df4")
+centered = false
+script = ExtResource("9_acprs")
 
 [connection signal="body_entered" from="ScoreLeft" to="." method="_on_score_left_body_entered"]
 [connection signal="body_entered" from="ScoreRight" to="." method="_on_score_right_body_entered"]

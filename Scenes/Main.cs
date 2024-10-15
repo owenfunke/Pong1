@@ -15,8 +15,10 @@ public partial class Main : Sprite2D
         _timer.Timeout += _on_timer_timeout;
         _scoreleft = GetNode<Area2D>("ScoreLeft");
         _scoreright = GetNode<Area2D>("ScoreRight");
-        _scoreleft.Connect("body_entered", new Callable(this, nameof(_on_score_left_body_entered)));
-        _scoreright.Connect("body_entered", new Callable(this, nameof(_on_score_right_body_entered)));
+        //_scoreleft.Connect("body_entered", new Callable(this, nameof(_on_score_left_body_entered)));
+        //_scoreright.Connect("body_entered", new Callable(this, nameof(_on_score_right_body_entered)));
+        _scoreleft.BodyEntered += _on_score_left_body_entered; 
+        _scoreright.BodyEntered += _on_score_right_body_entered;
     }
     public void _on_timer_timeout(){
         Ball ball = GetNode<Ball>("MyBalls");

@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlusmnkafdc4h"
-valid=false
+uid="uid://ck4cb8f3ubkqt"
+path="res://.godot/imported/pngkey.com-blurry-transparent-png-3687354.png-72797a67384d28af90f9f90d90bf673e.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/Vignette.png"
+source_file="res://assets/pngkey.com-blurry-transparent-png-3687354.png"
+dest_files=["res://.godot/imported/pngkey.com-blurry-transparent-png-3687354.png-72797a67384d28af90f9f90d90bf673e.ctex"]
 
 [params]
 

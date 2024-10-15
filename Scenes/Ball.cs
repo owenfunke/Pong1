@@ -12,7 +12,7 @@ public partial class Ball : CharacterBody2D
     public float speed;
     public float acceleration = 50f;
     public Vector2 direction;
-    public const float MaxYVector = 0.6f;
+    public const float MaxYVector = 1.0f;
     float halfWidth;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready(){
