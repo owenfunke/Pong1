@@ -48,6 +48,12 @@ public partial class Ball : CharacterBody2D
             halfPaddleHeight = player.halfPaddleHeight;
             GD.Print("Player");
         }
+        else if (collider is Player2 player2)
+        {
+            paddle_y = player2.Position.Y;
+            halfPaddleHeight = player2.halfPaddleHeight;
+            GD.Print("Player2");
+        }
         // Check if collider is Ai
         else if (collider is Ai ai)
         {
@@ -81,8 +87,9 @@ public partial class Ball : CharacterBody2D
             GodotObject collider = collision.GetCollider();
             Player player = GetNode<Player>("../Player");
             Ai ai = GetNode<Ai>("../AI");
+            Player2 player2 = GetNode<Player2>("../Player2");
                 
-            if (collider == player || collider == ai){
+            if (collider == player || collider == ai  || collider == player2){
                 GD.Print("Collision with Player or AI. Increasing speed.");
                 speed += acceleration;
                 direction = NewDirection(collider);

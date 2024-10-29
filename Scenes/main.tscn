@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://8n0umoiflm7j"]
+[gd_scene load_steps=16 format=3 uid="uid://8n0umoiflm7j"]
 
 [ext_resource type="Texture2D" uid="uid://di5qbif25vjhl" path="res://assets/Bg.png" id="1_psdn7"]
 [ext_resource type="FontFile" uid="uid://cunmo1076xcfb" path="res://assets/pixel_2/Pixel-Regular.ttf" id="2_jbh20"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/Player.cs" id="3_ayq64"]
 [ext_resource type="Script" path="res://Scenes/Ball.cs" id="4_e2it6"]
 [ext_resource type="Script" path="res://Scenes/Ai.cs" id="4_hppri"]
+[ext_resource type="Script" path="res://Scenes/Player2.cs" id="4_puq53"]
 [ext_resource type="Script" path="res://Scenes/TestText.cs" id="6_je73w"]
 [ext_resource type="Texture2D" uid="uid://ck4cb8f3ubkqt" path="res://assets/pngkey.com-blurry-transparent-png-3687354.png" id="8_v3df4"]
 [ext_resource type="Script" path="res://Scenes/Vignette.cs" id="9_acprs"]
@@ -32,7 +33,7 @@ centered = false
 script = ExtResource("2_ngmen")
 
 [node name="Player" type="StaticBody2D" parent="."]
-position = Vector2(50, 324)
+position = Vector2(50, 200)
 script = ExtResource("3_ayq64")
 
 [node name="ColorRect" type="ColorRect" parent="Player"]
@@ -43,9 +44,29 @@ offset_top = -60.0
 offset_right = 20.0
 offset_bottom = 60.0
 grow_vertical = 2
+color = Color(0.920949, 0.0992314, 0.363928, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(10, 0)
+shape = SubResource("RectangleShape2D_ovw1t")
+
+[node name="Player2" type="StaticBody2D" parent="."]
+position = Vector2(50, 400)
+script = ExtResource("4_puq53")
+
+[node name="ColorRect" type="ColorRect" parent="Player2"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = 60.0
+grow_vertical = 2
+color = Color(0.132013, 0.738459, 0.513802, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
 position = Vector2(10, 0)
 shape = SubResource("RectangleShape2D_ovw1t")
 
@@ -151,6 +172,7 @@ text = "sdjkj
 script = ExtResource("6_je73w")
 
 [node name="Vignette" type="Sprite2D" parent="."]
+visible = false
 light_mask = 4
 visibility_layer = 4
 scale = Vector2(1.805, 1.62)

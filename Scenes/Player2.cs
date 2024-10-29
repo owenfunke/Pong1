@@ -1,0 +1,35 @@
+using Godot;
+using System;
+using System.Numerics;
+using System.Runtime.InteropServices;
+
+public partial class Player2 : StaticBody2D
+{
+	int windowHeight;
+	public int paddleHeight;
+	public int halfPaddleHeight;
+	
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		windowHeight = (int)GetViewport().GetVisibleRect().Size.Y;
+		paddleHeight = (int)GetNode<ColorRect>("ColorRect").Size.Y;
+		halfPaddleHeight = paddleHeight/2;
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		Main parentNode = (Main)GetParent();
+		if (Input.IsActionPressed("w_key"))
+		{
+			Position -= new Godot.Vector2(0, parentNode.paddleSpeed * (float)delta);
+		}
+		else if (Input.IsActionPressed("s_key"))
+		{
+			// Move the paddle down
+			Position += new Godot.Vector2(0, parentNode.paddleSpeed * (float)delta);
+		}
+		Position = new Godot.Vector2(Position.X, Mathf.Clamp(Position.Y, halfPaddleHeight, windowHeight - halfPaddleHeight));
+	}
+}
