@@ -22,6 +22,7 @@ public partial class Ai : StaticBody2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
+        float[] arr = {-1f, 0f, 1f};
         ballPosition = GetNode<Ball>("/root/Main/MyBalls").Position;
         Main main = GetNode<Main>("/root/Main");
         distance = (int)Position.Y - (int)ballPosition.Y;
@@ -31,7 +32,7 @@ public partial class Ai : StaticBody2D
         else{
             moveDistance = distance;
         }
-        float[] arr = {-1f, 0f, 1f};
+        
         Position -= new Vector2(0, (int)moveDistance + arr[GD.Randi() % 3]);
         Position = new Vector2(Position.X, Mathf.Clamp(Position.Y, halfPaddleHeight, windowHeight - halfPaddleHeight));
     }
